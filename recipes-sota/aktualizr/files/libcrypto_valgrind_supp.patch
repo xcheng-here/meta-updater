@@ -1,0 +1,31 @@
+diff --git a/tests/aktualizr.supp b/tests/aktualizr.supp
+index 51aae5c5..2b65f5c0 100644
+--- a/tests/aktualizr.supp
++++ b/tests/aktualizr.supp
+@@ -90,3 +90,25 @@
+    fun:ostree_sysroot_simple_write_deployment
+    ...
+ }
++{
++   libcrypto.so.1.0.2 false positives (see e.g. https://github.com/curl/curl/issues/1117 and http://openssl.6102.n7.nabble.com/PURIFY-flag-in-md-rand-c-and-a-strongly-worded-comment-td41674.html)
++   Memcheck:Cond
++   obj:/usr/lib/libcrypto.so.1.0.2
++}
++{
++   libcrypto.so.1.0.2 false positives (see e.g. https://github.com/curl/curl/issues/1117 and http://openssl.6102.n7.nabble.com/PURIFY-flag-in-md-rand-c-and-a-strongly-worded-comment-td41674.html)
++   Memcheck:Cond
++   ...
++   obj:/usr/lib/libcrypto.so.1.0.2
++}
++{
++   libcrypto.so.1.0.2 false positives (see e.g. https://github.com/curl/curl/issues/1117 and http://openssl.6102.n7.nabble.com/PURIFY-flag-in-md-rand-c-and-a-strongly-worded-comment-td41674.html)
++   Memcheck:Value8
++   obj:/usr/lib/libcrypto.so.1.0.2
++}
++{
++   libcrypto.so.1.0.2 false positives (see e.g. https://github.com/curl/curl/issues/1117 and http://openssl.6102.n7.nabble.com/PURIFY-flag-in-md-rand-c-and-a-strongly-worded-comment-td41674.html)
++   Memcheck:Value8
++   ...
++   obj:/usr/lib/libcrypto.so.1.0.2
++}
+
