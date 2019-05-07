@@ -19,6 +19,7 @@ GARAGE_SIGN_PV = "0.6.0-18-g5b8b259"
 
 SRC_URI = " \
   gitsm://github.com/advancedtelematic/aktualizr;branch=${BRANCH} \
+  file://libcrypto_valgrind_supp.patch \
   file://run-ptest \
   file://aktualizr.service \
   file://aktualizr-secondary.service \
