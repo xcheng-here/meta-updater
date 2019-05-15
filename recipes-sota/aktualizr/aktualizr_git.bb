@@ -109,13 +109,13 @@ do_install_append () {
         printf "[provision]\nprimary_ecu_hardware_id = ${SOTA_HARDWARE_ID}\n" > ${D}${libdir}/sota/conf.d/40-hardware-id.toml
     fi
 
-    if [ -n "${SOTA_SECONDARY_CONFIG_DIR}" ]; then
-        if [ -d "${SOTA_SECONDARY_CONFIG_DIR}" ]; then
+    if [ -n "${SOTA_SECONDARY_CONFIG}" ]; then
+        if [ -f "${SOTA_SECONDARY_CONFIG}" ]; then
             install -m 0700 -d ${D}${sysconfdir}/sota/ecus
-            install -m 0644 "${SOTA_SECONDARY_CONFIG_DIR}"/* ${D}${sysconfdir}/sota/ecus/
-            printf "[uptane]\nsecondary_configs_dir = /etc/sota/ecus/\n" > ${D}${libdir}/sota/conf.d/30-secondary-configs-dir.toml
+            install -m 0644 "${SOTA_SECONDARY_CONFIG}" ${D}${sysconfdir}/sota/ecus/
+            printf "[uptane]\nsecondary_config_file = /etc/sota/ecus/$(basename -- ${SOTA_SECONDARY_CONFIG})\n" > ${D}${libdir}/sota/conf.d/30-secondary-config.toml
         else
-            bbwarn "SOTA_SECONDARY_CONFIG_DIR is set to an invalid directory (${SOTA_SECONDARY_CONFIG_DIR})"
+            bbwarn "SOTA_SECONDARY_CONFIG is set to an invalid file (${SOTA_SECONDARY_CONFIG})"
         fi
     fi
 
